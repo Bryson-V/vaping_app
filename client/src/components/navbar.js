@@ -15,44 +15,10 @@ export default function Navbar() {
        <NavLink className="navbar-brand" href="https://www.gusd.net/CVHS">
        <img style={{"width" : 10 + '%'}} src={MyImage} alt="CVHS Falcon"></img>
        </NavLink>
-       <button
-         className="navbar-toggler"
-         type="button"
-         data-toggle="collapse"
-         data-target="#navbarSupportedContent"
-         aria-controls="navbarSupportedContent"
-         aria-expanded="true"
-         aria-label="Toggle navigation"
-       >
-         <span className="navbar-toggler-icon"></span>
-         <div class="dropdown-content">
-         <NavLink className="nav-link" to="/create">
-               Submit Form
-             </NavLink>
-             <NavLink className="nav-link" to="/">
-               Home
-             </NavLink>
-         </div>
-       </button>
-       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul className="navbar-nav ml-auto">
-           <li className="nav-item">
-             <NavLink className="nav-link" to="/">
-               Home
-             </NavLink>
-           </li>
-         </ul>
-       </div>
-       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul className="navbar-nav ml-auto">
-           <li className="nav-item">
-             <NavLink className="nav-link" to="/create">
-               Submit Form
-             </NavLink>
-           </li>
-         </ul>
-       </div>
-       
+       <ul>
+        <li><a href="/" class= "link-secondary">Home</a></li>
+        <li><a href="/create" class="btn btn-primary stretched-link">Submit</a></li>
+       </ul>
      </nav>
    </div>
  );

@@ -34,7 +34,7 @@ recordRoutes.route("/record/:id").get(function (req, res) {
      res.json(result);
    });
 });
- 
+
 // This section will help you create a new record.
 recordRoutes.route("/record/add").post(function (req, response) {
  let db_connect = dbo.getDb();
@@ -53,7 +53,6 @@ recordRoutes.route("/record/add").post(function (req, response) {
  });
 });
 
- 
 // This section will help you update a record by id.
 recordRoutes.route("/update/:id").post(function (req, response) {
  let db_connect = dbo.getDb();

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
- 
+import React, {useState } from "react";
+import {useNavigate} from "react-router-dom";
+import background from "./CVHS.png";
+// import { Text, StyleSheet } from 'react-native';
 export default function Create() {
  const [form, setForm] = useState({
    building: "",
@@ -8,7 +9,6 @@ export default function Create() {
    description: "",
  });
  const navigate = useNavigate();
- 
  // These methods will update the state properties.
  function updateForm(value) {
    return setForm((prev) => {
@@ -36,16 +36,28 @@ export default function Create() {
    });
  
    setForm({building: "", level: "", description: ""});
-   navigate("/");
+   navigate("/thank");
  }
 
  // This following section will display the form that takes the input from the user.
  return (
-   <div>
-     <h3>Submit Form</h3>
+  <div>
+        <text>
+     <h3>Vaping Submit Form</h3>
+     </text>
+   <div style={{
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    backgroundPosition: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+  }}>
      <form onSubmit={onSubmit}>
        <div className="form-group">
-       <label htmlFor="building">Building: </label>
+       <label htmlFor="building"> <span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic", fontSize: 30}}>Building</span></label>
          <input
            type="text"
            className="form-control"
@@ -114,6 +126,7 @@ export default function Create() {
          
        </div>
      </form>
+   </div>
    </div>
  );
 }
