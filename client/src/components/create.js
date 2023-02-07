@@ -45,7 +45,7 @@ export default function Create() {
         <text>
      <h3>Vaping Submit Form</h3>
      </text>
-   <div style={{
+     <div style ={{
     backgroundImage: `url(${background})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
@@ -55,6 +55,16 @@ export default function Create() {
     justifyContent: 'center',
     height: '100vh',
   }}>
+   <div style = {{
+    backgroundColor: "white",
+    backgroundPosition: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: "80",
+    width: "50vh",
+    borderRadius: "10px",
+   }}>
      <form onSubmit={onSubmit}>
        <div className="form-group">
        <label htmlFor="building"> <span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic", fontSize: 30}}>Building</span></label>
@@ -78,7 +88,7 @@ export default function Create() {
              checked={form.level === "Vaping"}
              onChange={(e) => updateForm({ level: e.target.value })}
            />
-           <label htmlFor="positionIntern" className="form-check-label">Vaping</label>
+           <label htmlFor="positionIntern" className="form-check-label"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic"}}>Vaping</span></label>
          </div>
          <div className="form-check form-check-inline">
            <input
@@ -90,7 +100,7 @@ export default function Create() {
              checked={form.level === "Drugs"}
              onChange={(e) => updateForm({ level: e.target.value })}
            />
-           <label htmlFor="positionJunior" className="form-check-label">Drugs</label>
+           <label htmlFor="positionJunior" className="form-check-label"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic"}}>Drugs</span></label>
          </div>
          <div className="form-check form-check-inline">
            <input
@@ -102,10 +112,10 @@ export default function Create() {
              checked={form.level === "Alcohol"}
              onChange={(e) => updateForm({ level: e.target.value })}
            />
-           <label htmlFor="positionSenior" className="form-check-label">Alcohol</label>
+           <label htmlFor="positionSenior" className="form-check-label"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic"}}>Building</span></label>
          </div>
          <br></br>
-         <label htmlFor="description">Description</label>
+         <label htmlFor="description"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic", fontSize: 30}}>Description</span></label>
          <div className="form-group">
          <input
            type="text"
@@ -126,6 +136,7 @@ export default function Create() {
          
        </div>
      </form>
+   </div>
    </div>
    </div>
  );

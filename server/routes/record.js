@@ -1,4 +1,5 @@
 const express = require("express");
+
  
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
@@ -86,35 +87,24 @@ recordRoutes.route("/:id").delete((req, response) => {
  
 const nodemailer = require('nodemailer')
 const {google} = require ('googleapis')
-const CLIENT_ID = '1086495023296-0vi82fbmaovn7qqfii82ii5iru46leb5.apps.googleusercontent.com'
-const CLIENT_SECRET = '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'
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground'
-const REFRESH_TOKEN = '1//04B99pcBeK2PoCgYIARAAGAQSNwF-L9Irq1NzzGxSOxQ-0diSx2W2LZ3BPwXpmagrFmCsuMWe9KnsGjUTSkCMzj-HBxSlDWzIO24'
+const json = require('./tokens.json');
 
-const oAuth2Client = new google.auth.OAuth2(
-CLIENT_ID,
-CLIENT_SECRET,
-REDIRECT_URI
-);
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 async function sendMail(description, building, level) {
 try {
-  const accessToken = await oAuth2Client.getAccessToken();
 
   const transport = nodemailer.createTransport({
-    service: 'gmail',
+    service: 'Gmail',
     auth: {
       type: 'OAuth2',
-      user: 'bvil536@gmail.com',
-      clientId: CLIENT_ID,
-      clientSecret: CLIENT_SECRET,
-      refreshToken: REFRESH_TOKEN,
-      accessToken: accessToken,
+      user: 'vaping-submission@vape-app-371517.iam.gserviceaccount.com',
+      serviceClient:json.client_id,
+      privateKey: json.private_key
+
     },
   });
   const mailOptions = {
-    from: 'bvil536@gmail.com',
+    from: 'vaping-submission@vape-app-371517.iam.gserviceaccount.com',
     to: 'bvil536@gmail.com',
     subject: 'Vape Form',
     text: 'form',

@@ -11,7 +11,7 @@ export default function Thank(){
             alignItems: 'center',
             justifyContent: 'center',
             height: '100vh',}}>
-                <p>Thank You for your submission!</p>
+                <p><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic", fontSize: 30}}>Thank You for your Submission!</span></p>
                 <a href="/">
                 <button>Submit Another Post</button>
                 </a>
