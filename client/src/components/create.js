@@ -1,10 +1,10 @@
 import React, {useState } from "react";
 import {useNavigate} from "react-router-dom";
-import background from "./CVHS.png";
-// import { Text, StyleSheet } from 'react-native';
 export default function Create() {
  const [form, setForm] = useState({
    building: "",
+   time: "",
+   gender:"",
    level: "",
    description: "",
  });
@@ -19,7 +19,8 @@ export default function Create() {
  // This function will handle the submission.
  async function onSubmit(e) {
    e.preventDefault();
- 
+  //  alert(form.building);
+
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form };
  
@@ -35,87 +36,129 @@ export default function Create() {
      return;
    });
  
-   setForm({building: "", level: "", description: ""});
+   setForm({building: "", time: "", gender: "", level: "", description: ""});
    navigate("/thank");
  }
-
  // This following section will display the form that takes the input from the user.
  return (
   <div>
-        <text>
-     <h3>Vaping Submit Form</h3>
-     </text>
-     <div style ={{
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "contain",
+    
+
+  <div>
+    
+
+    <div style ={{
+    background: "radial-gradient( "  + "AliceBlue" + ", " + "rgb(55, 100, 160)"  + ")",
     backgroundPosition: "center",
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
+    
   }}>
-   <div style = {{
-    backgroundColor: "white",
-    backgroundPosition: "center",
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: "80",
-    width: "50vh",
-    borderRadius: "10px",
-   }}>
+
+<div>
+<b><label style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans",  fontSize: "3.5vh", fontWeight: "bold" ,  position:"absolute", top:"2vh", left:"0vw" }}>CVHS Anonymous Tipper</label></b>
+</div>
+
+   <div style={{top:"60vh"}}>
      <form onSubmit={onSubmit}>
-       <div className="form-group">
-       <label htmlFor="building"> <span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic", fontSize: 30}}>Building</span></label>
+
+       <label htmlFor="building"> <span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans",  fontSize: "7vh", marginBottom: "100px"}}>Building</span></label>
+       <div>
+       <select id = "building" name="building">  
+       <option>  </option>  
+       <option value="1000"> 1000 </option>  
+       <option value="2000"> 2000 </option>  
+       <option value="3000"> 3000 </option>  
+       <option value="4000"> 4000 </option>  
+       </select>  
+       </div>
+
+       <div className="form-group" class="field">
+
+       <div className="form-check form-check-inline" >
+           <input
+             className="form-check-input"
+             type="radio"
+             name="gender"
+             id="Girls"
+             value="Girls"
+             justifyContent= "space-around"
+             checked={form.gender === "Girls"}
+             onChange={(e) => updateForm({ gender: e.target.value })}
+           />
+           <label htmlFor="Girls" className="form-check-label"><span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans",  }}>Girls</span></label>
+         </div>
+
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="gender"
+             id="Boys"
+             value="Boys"
+             justifyContent= "space-around"
+             checked={form.gender === "Boys"}
+             onChange={(e) => updateForm({ gender: e.target.value })}
+           />
+           <label htmlFor="Boys" className="form-check-label"><span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans"}}>Boys</span></label>
+         </div>
+         </div>
+
+         <label htmlFor="building"> <span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans", fontSize: "7vh"}}>Time</span></label>
+         <div className="form-group">
          <input
-           type="text"
+           type="time"
            className="form-control"
-           id="building"
-           value={form.building}
-           onChange={(e) => updateForm({ building: e.target.value })}
+           id="time"
+           justifyContent= "space-around"
+
+           value={form.time}
+           onChange={(e) => updateForm({ time: e.target.value })}
          />
        </div>
+
        <div className="form-group">
          <div className="form-check form-check-inline">
            <input
              className="form-check-input"
              type="radio"
-             name="positionOptions"
-             id="positionIntern"
+             name="type"
+             id="Vaping"
              value="Vaping"
              
              checked={form.level === "Vaping"}
              onChange={(e) => updateForm({ level: e.target.value })}
            />
-           <label htmlFor="positionIntern" className="form-check-label"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic"}}>Vaping</span></label>
+           <label htmlFor="Vaping" className="form-check-label"><span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans"}}>Vaping</span></label>
          </div>
          <div className="form-check form-check-inline">
            <input
              className="form-check-input"
              type="radio"
-             name="positionOptions"
-             id="positionJunior"
+             name="type"
+             id="Drugs"
              value="Drugs"
              checked={form.level === "Drugs"}
              onChange={(e) => updateForm({ level: e.target.value })}
            />
-           <label htmlFor="positionJunior" className="form-check-label"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic"}}>Drugs</span></label>
+           <label htmlFor="Drugs" className="form-check-label"><span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans"}}>Drugs</span></label>
          </div>
          <div className="form-check form-check-inline">
            <input
              className="form-check-input"
              type="radio"
-             name="positionOptions"
-             id="positionSenior"
+             name="type"
+             id="Alcohol"
              value="Alcohol"
              checked={form.level === "Alcohol"}
              onChange={(e) => updateForm({ level: e.target.value })}
            />
-           <label htmlFor="positionSenior" className="form-check-label"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic"}}>Building</span></label>
+           <label htmlFor="Alcohol" className="form-check-label"><span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans"}}>Alcohol</span></label>
          </div>
          <br></br>
-         <label htmlFor="description"><span style={{color: 'blue', fontFamily: "Chilanka", fontStyle: "italic", fontSize: 30}}>Description</span></label>
+         <label htmlFor="description"><span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans", fontSize: "7vh"}}>Description </span></label>
          <div className="form-group">
          <input
            type="text"
@@ -124,20 +167,24 @@ export default function Create() {
            value={form.description}
            onChange={(e) => updateForm({ description: e.target.value })}
          />
-         
+        
        </div>
        </div>
        <div className="form-group">
          <input
            type="submit"
-           value="Submit Form"
+           style={{ fontFamily: "Open Sans"}}
+           value="Submit"
            className="btn btn-primary"
+           color= "rgb(29, 29, 29)"
          />
-         
        </div>
+       
      </form>
    </div>
    </div>
    </div>
+   </div>
+
  );
 }
