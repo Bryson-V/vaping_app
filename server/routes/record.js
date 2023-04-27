@@ -35,9 +35,11 @@ recordRoutes.route("/record/add").post(function (req, response) {
  };
  db_connect.collection("records").insertOne(myobj, function (err, res) {
    if (err) throw err;
-   sendMail(req.body.description, req.body.building, req.body.level, req.body.time, req.body.gender)
-   .then((result) => console.log('Email sent...', result))
-   .catch((error) => console.log(error.message));
+  
+      sendMail(req.body.description, req.body.building, req.body.level, req.body.time, req.body.gender)
+      .then((result) => console.log('Email sent...', result))
+      .catch((error) => console.log(error.message));
+
    console.log("1 document created");
    response.json(res);
  });
@@ -58,7 +60,7 @@ try {
       secure: false,
       logger: true,
       debug: true,
-      ignoreTLS: true // add this 
+      ignoreTLS: true
     },
   });
   const mailOptions = {
@@ -66,7 +68,7 @@ try {
     to: json.client_email,
     subject: 'Vape Form',
     text: 'form',
-    html: '<h3>A Vaping form has been submitted.</h3>\n  There was a submission in the '+gender+' restroom of the '+building+' building\n the type is: '+level+'.\n And the given description is: '+ description+'\n The time was '+time
+    html: '<h3>A Vaping form has been submitted.</h3>\n  There was a submission in the '+gender+' restroom of the '+building+' building \n the type is: '+level+'.\n And the given description is: '+ description+'\n The time was '+time
   };
   const result = await transport.sendMail(mailOptions);
   return result;
@@ -74,4 +76,5 @@ try {
   return error;
 }
 }
+
 module.exports = recordRoutes;

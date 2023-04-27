@@ -6,7 +6,7 @@ export default function Create() {
    time: "",
    gender:"",
    level: "",
-   description: "",
+   description: "None",
  });
  const navigate = useNavigate();
  // These methods will update the state properties.
@@ -65,7 +65,7 @@ export default function Create() {
      <form onSubmit={onSubmit}>
 
        <label htmlFor="building"> <span style={{color: 'rgb(29, 29, 29)', fontFamily: "Open Sans",  fontSize: "7vh", marginBottom: "100px"}}>Building</span></label>
-       <div>
+       {/* <div>
        <select id = "building" name="building">  
        <option>  </option>  
        <option value="1000"> 1000 </option>  
@@ -73,7 +73,22 @@ export default function Create() {
        <option value="3000"> 3000 </option>  
        <option value="4000"> 4000 </option>  
        </select>  
+       </div> */}
+          <div className="form-group">
+         <input
+           type="text"
+           maxlength="4"
+           minlength="4"
+           className="form-control"
+           id="building"
+           value={form.building}
+           onChange={(e) => updateForm({ building: e.target.value })}
+           
+         />
+        
+        
        </div>
+    
 
        <div className="form-group" class="field">
 
@@ -164,6 +179,7 @@ export default function Create() {
            type="text"
            className="form-control"
            id="description"
+           onClick="this.select()"
            value={form.description}
            onChange={(e) => updateForm({ description: e.target.value })}
          />
