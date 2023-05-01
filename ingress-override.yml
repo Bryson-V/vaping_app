@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  react-nginx-server:
+    networks:
+      - "traefik-ingress"
+    ports:
+      - "80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vaping-app.rule=Host(`vaping-app.ingress.localhost`)"
+      - "traefik.http.routers.vaping-app.entrypoints=web"
+networks:
+  traefik-ingress:
+    name: traefik-ingress_default
+    external: true
+  
