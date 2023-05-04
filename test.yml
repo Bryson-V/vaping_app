@@ -1,0 +1,24 @@
+name: vaping_app
+services:
+  backend:
+    build:
+      context: /home/robertbarnett/Programming/vaping_app/backend
+      dockerfile: ./Dockerfile.production
+    networks:
+      default: null
+  frontend:
+    build:
+      context: /home/robertbarnett/Programming/vaping_app/frontend
+      dockerfile: ./Dockerfile.production
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.vaping-app.rule: Host(`whoami.ingress.localhost`)
+      traefik.http.routers.vapping-app.entrypoints: web
+    networks:
+      traefik-ingress: null
+networks:
+  default:
+    name: vaping_app_default
+  traefik-ingress:
+    name: traefik-ingress_default
+    external: true

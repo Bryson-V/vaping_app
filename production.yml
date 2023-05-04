@@ -1,12 +1,8 @@
 version: "3.9"
 services:
-  express-backend:
+  backend:
     build:
-      dockerfile: Dockerfile.production
-    ports:
-      - "80"
-  react-nginx-server:
+      dockerfile: ./Dockerfile.production
+  frontend:
     build:
-      dockerfile: Dockerfile.production
-    ports:
-      - "80"
+      dockerfile: ./Dockerfile.production
