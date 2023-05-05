@@ -3,6 +3,16 @@ services:
   backend:
     build:
       dockerfile: ./Dockerfile.production
+    labels:
+      - "a.a=true"
   frontend:
     build:
       dockerfile: ./Dockerfile.production
+    labels:
+      - "traefik.enable=aaaaasdddddddddddd"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.ingress.localhost`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+networks:
+  traefik-ingress:
+    name: traefik-ingress_default
+    external: true

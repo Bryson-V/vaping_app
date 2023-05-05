@@ -1,0 +1,24 @@
+name: vaping_app
+networks:
+  ingress-pool:
+    external: true
+    name: ingress-pool
+services:
+  backend:
+    networks:
+      - ingress-pool
+    build:
+      context: /home/robertbarnett/Programming/vaping_app/backend
+      dockerfile: ./Dockerfile.production
+    labels:
+      - "traefik.enable=true"
+#      traefik.http.routers.backend.entrypoints: web
+  frontend:
+    networks:
+      - ingress-pool
+    build:
+      context: /home/robertbarnett/Programming/vaping_app/frontend
+      dockerfile: ./Dockerfile.production
+    labels:
+      - "traefik.enable=true"
+#      traefik.http.routers.frontend.entrypoints: web
