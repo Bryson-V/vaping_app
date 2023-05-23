@@ -1,6 +1,0 @@
-version: 1.0
-compose-files:
-  - "compose.yml"
-  - "production.yml"
-ingress-services:
-  - "backend"

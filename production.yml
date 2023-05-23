@@ -4,15 +4,13 @@ services:
     build:
       dockerfile: ./Dockerfile.production
     labels:
-      - "a.a=true"
+      - "traefik.enable=true"
   frontend:
     build:
       dockerfile: ./Dockerfile.production
     labels:
-      - "traefik.enable=aaaaasdddddddddddd"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.ingress.localhost`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.enable=true"
 networks:
-  traefik-ingress:
+  default:
     name: traefik-ingress_default
     external: true

@@ -14,3 +14,6 @@ There is also a connection to MongoDB as a database for information
 
 ## Development 
 Click [me](./DEVELOPMENT.md) or goto DEVELOPMENT.md
+
+## Running
+```docker compose -f compose.yml -f production.yml up```
