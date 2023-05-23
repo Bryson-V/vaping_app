@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      dockerfile: ./Dockerfile.production
+    labels:
+      - "traefik.enable=true"
+  frontend:
+    build:
+      dockerfile: ./Dockerfile.production
+    labels:
+      - "traefik.enable=true"
+networks:
+  default:
+    name: traefik-ingress_default
+    external: true
