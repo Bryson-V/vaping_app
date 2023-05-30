@@ -8,7 +8,6 @@ import Create from "./components/create";
 import Thank from "./components/thank";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-
 const App = () => {
  return (
 
